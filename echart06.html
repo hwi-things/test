@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./assets/plugin/echarts.min.js"></script>
+
+</head>
+<body>
+  <!-- 새로고침하면 변경되지만 반응형으로 즉각적인 변화는 안됨 -->
+  <div style="width: 100%; height:100vh ;" >
+    <div id="main" style="width: 100%;height:100%;"></div>
+  </div>
+  <script>
+    var chartDom = document.getElementById('main');
+var myChart = echarts.init(chartDom);
+var option;
+
+// Thanks to: 若怀冰
+// http://gallery.echartsjs.com/explore.html?u=bd-16906679
+// http://gallery.echartsjs.com/editor.html?c=xHJw-hVqjW
+$.getJSON(
+  ROOT_PATH + '/data/asset/data/house-price-area2.json',
+  function (data) {
+    var option = {
+      title: {
+        text: 'Dispersion of house price based on the area',
+        left: 'center',
+        top: 0
+      },
+      visualMap: {
+        min: 15202,
+        max: 159980,
+        dimension: 1,
+        orient: 'vertical',
+        right: 10,
+        top: 'center',
+        text: ['HIGH', 'LOW'],
+        calculable: true,
+        inRange: {
+          color: ['#f2c31a', '#24b7f2']
+        }
+      },
+      tooltip: {
+        trigger: 'item',
+        axisPointer: {
+          type: 'cross'
+        }
+      },
+      xAxis: [
+        {
+          type: 'value'
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value'
+        }
+      ],
+      series: [
+        {
+          name: 'price-area',
+          type: 'scatter',
+          symbolSize: 5,
+          data: data
+        }
+      ]
+    };
+    myChart.setOption(option);
+  }
+);
+
+option && myChart.setOption(option);
+
+  </script>
+</body>
+</html>

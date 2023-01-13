@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./assets/plugin/echarts.min.js"></script>
+
+</head>
+<body>
+    <div id="main" style="width: 100%;height:100vh;"></div>
+<script>
+    // var echarts = require('echarts');
+
+var chartDom = document.getElementById('main');
+var myChart = echarts.init(chartDom);
+var option;
+
+option = {
+  legend:{
+    data:['Access From']
+  },
+backgroundColor: '#2c343c',
+  title: {
+    text: '파이 그래프 연습',
+    left: 'center',
+    top: 200,
+    textStyle: {
+      color: '#ccc'
+    }
+  },
+  tooltip: {
+    trigger: 'item' //'axis'
+  },
+//   톤온톤, 현재는 값 큰게 옅은 색상
+  visualMap: {
+    show: false,
+    min: 80,
+    max: 600,
+    inRange: {
+      colorLightness: [0, 1]
+    }
+  },
+  series: [
+    {
+      name: 'Access From',
+      type: 'pie',
+      radius: '55%',
+      center: ['50%', '50%'],
+      data: [
+        { value: 335, name: 'Direct' },
+        { value: 310, name: 'Email' },
+        { value: 274, name: 'Union Ads' },
+        { value: 235, name: 'Video Ads' },
+        { value: 400, name: 'Search Engine' }
+      ].sort(function (a, b) {
+        return a.value - b.value;
+      }),
+    //   표 값
+      roseType: 'radius',
+      label: {
+        color: 'rgba(255, 255, 255, 0.3)'
+      },
+    //   뻗어있는 선
+      labelLine: {
+        lineStyle: {
+          color: 'rgba(255, 255, 255, 0.3)'
+        },
+        smooth: 0.2,
+        length: 10,
+        length2: 20
+      },
+    //   기준 색 (붉은색, 파란색이 기본)
+      itemStyle: {
+        color: '#c23531',
+        shadowBlur: 200,
+        shadowColor: 'rgba(0, 0, 0, 0.5)'
+      },
+    //   안에서 밖으로 뻗어가는 애니메이션
+      animationType: 'scale',
+      animationEasing: 'elasticOut',
+      animationDelay: function (idx) {
+        return Math.random() * 200;
+      }
+    }
+  ]
+};
+
+option && myChart.setOption(option);
+
+//반응형 구현 타이틀 텍스트는 적용안됨
+
+window.addEventListener('resize',function(){
+  myChart.resize();
+})
+
+
+</script>
+</body>
+</html>

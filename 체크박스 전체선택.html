@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type='checkbox'
+       name='animal' 
+       value='selectall'
+       onclick='selectAll(this)'/> <b>Select All</b>
+<br />
+<input type='checkbox'
+       name='animal' 
+       value='dog'/> 개
+<br />
+<input type='checkbox' 
+       name='animal' 
+       value='cat' /> 고양이
+<br />
+<input type='checkbox' 
+       name='animal' 
+       value='rabbit' /> 토끼
+<hr>
+       <input type='checkbox'
+       name='food' 
+       value='bread'
+       onclick='checkOnlyOne(this)'/> 빵
+<br />
+<input type='checkbox' 
+       name='food' 
+       value='coffee' 
+       onclick='checkOnlyOne(this)'/> 커피
+<br />
+<input type='checkbox' 
+       name='food' 
+       value='tomato' 
+       onclick='checkOnlyOne(this)'/> 토마토
+</body>
+<script>
+  function selectAll(selectAll)  {
+  const checkboxes 
+       = document.getElementsByName('animal');
+  
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = selectAll.checked;
+  })
+}
+
+//다른방법 같은결과
+// function selectAll(selectAll)  {
+//   const checkboxes 
+//      = document.querySelectorAll('input[type="checkbox"]');
+  
+//   checkboxes.forEach((checkbox) => {
+//     checkbox.checked = selectAll.checked
+//   })
+// }
+
+
+//하나만 선택되도록
+function checkOnlyOne(element) {
+  
+  const checkboxes 
+      = document.getElementsByName("food");
+  
+  checkboxes.forEach((cb) => {
+    cb.checked = false;
+  })
+  
+  element.checked = true;
+}
+</script>
+</html>

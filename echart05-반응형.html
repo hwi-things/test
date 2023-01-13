@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./assets/plugin/echarts.min.js"></script>
+<style>
+.echarts__demo{
+  height:250px;
+  width:100%;
+}
+</style>
+</head>
+<body>
+    <div id='echarts__demo1' class='echarts__demo'></div>
+    <div id='echarts__demo2' class='echarts__demo'></div>
+
+<script>
+var chart1  = echarts.init(document.getElementById('echarts__demo1'));	
+var chart2  = echarts.init(document.getElementById('echarts__demo2'));	
+var myChart = echarts.init(chart1);
+
+
+
+var option = {
+    xAxis: {
+        type: 'category',
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
+        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        type: 'line'
+    }]
+};
+
+
+myChart.setOption(option);
+chart2.setOption(option);
+
+
+window.addEventListener('resize',function(){
+  chart1.resize();
+})
+
+</script>
+    
+</body>
+</html>

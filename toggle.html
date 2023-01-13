@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 1 */
+    .toggleSwitch {
+  width: 100px;
+  margin: 30px;
+  height: 50px;
+  display: block;
+  position: relative;
+  border-radius: 30px;
+  background-color: #fff;
+  box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%);
+  cursor: pointer;
+}
+
+.toggleSwitch .toggleButton {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: #f03d3d;
+}
+
+.toggleSwitch.active {
+  background: #f03d3d;
+}
+
+.toggleSwitch.active .toggleButton {
+  left: calc(100% - 44px);
+  background: #fff;
+}
+
+.toggleSwitch, .toggleButton {
+  transition: all 0.4s ease-in-out;
+}
+
+
+/* 2. js 없이 구현 */
+
+.swich-toggle{
+	display: inline-block;
+
+}
+.swich-toggle input{
+	display: none;
+}
+
+.swich-toggle span{
+	position: relative;
+	display: block;
+	width: 44px;
+	height: 22px;
+	border-radius: 22px;
+	background-color: #f1f1f1;
+	cursor: pointer;
+	transition: background-color 0.15s linear;
+}
+
+.swich-toggle span::before{
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 22px;
+	height: 22px;
+	border-radius: 22px;
+	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.13);
+	border: solid 1px #ddd;
+	background-color: #fff;
+	transition: left 0.15s linear;
+}
+.swich-toggle input:checked ~ span{
+	background-color: #fa7c2d;
+}
+.swich-toggle input:checked ~ span::before{
+	left: 23px;
+}
+
+/* 3 */
+#switch {
+  width:260px;
+  padding:15px;
+  border:4px solid #2196F3;
+  box-sizing:border-box;
+  opacity:0.5;
+  -webkit-filter:grayscale(100%);
+  -webkit-transition:all 03s;
+  transition:all 0.3s;
+  border-radius:540px;
+  cursor:pointer
+}
+
+#toggle {
+  width:80px;
+  height:80px;
+  background:#2196F3;
+  border-radius:100%;
+  position:relative;
+  transition:all 0.3s;
+  left:0;
+  -webkit-transition:all 0.3s;
+}
+
+#switch.hover #toggle {
+  left:140px;
+}
+
+#switch.hover {
+  -webkit-filter:none;
+  opacity:1
+}
+
+  </style>
+</head>
+<body>
+  <!-- 1 -->
+  <label for="toggle" class="toggleSwitch">
+    <span class="toggleButton"></span>
+  </label>
+
+<!-- 2 -->
+  <label class="swich-toggle">
+    <input type="checkbox">
+    <span></span>
+  </label>
+
+  <!-- 3 -->
+  <div id="switch" class="hover" onclick="this.classList.toggle('hover')">
+    <div id="toggle">
+    </div>
+  </div>
+  
+
+
+  <script>
+    const $toggle = document.querySelector(".toggleSwitch");
+
+$toggle.onclick = () => {
+  $toggle.classList.toggle('active');
+}
+  </script>
+</body>
+</html>

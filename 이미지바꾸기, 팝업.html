@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.bgColor {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  background-color: #f9b514;
+}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div>
+      <img src="https://placeimg.com/200/200/1" class="image">
+    </div>
+    <div>
+      <button id="btn1">이미지 바꾸기</button>
+    </div>
+  </div>
+  <div class="box">
+    <div class="bgColor"></div>
+    <div>
+      <button id="btn2">컬러 바꾸기</button>
+    </div>
+  </div>
+  
+  <div class="box">
+    <button id="btn3">팝업창</button>
+  </div>
+  <script>
+    let btn1 = document.getElementById("btn1");
+    let btn2 = document.getElementById("btn2");
+    let btn3 = document.getElementById("btn3");
+    let i = 1;
+    let color = ["#592C45", "#F2EFBB", "#F2C094", "#F2A488", "#D96B62"];
+  
+  
+  
+    btn1.addEventListener('click', function(idx) {
+      idx && i++;
+      document.querySelector(".image").setAttribute("src", "https://placeimg.com/200/200/" + i);
+    });
+  
+  
+    btn2.addEventListener('click', function() {
+      let num = Math.floor(Math.random() * color.length);
+      document.querySelector(".bgColor").style.backgroundColor = color[num];
+    });
+  
+    btn3.addEventListener('click', function() {
+      window.open("https://placeimg.com/300/300/ANY", "", "width= 400, height= 400, left= 0, top= 0");
+    });
+  
+  </script>
+  
+</body>
+</html>

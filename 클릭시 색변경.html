@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+.container {
+  display: grid;
+  grid-template-columns: 20px 200px;
+  justify-content: center;
+  justify-items: center;
+  align-content: stretch;
+  gap: 20px 20px;
+}
+
+.box1, .box2, .box3, .box4 {
+  width: 120px;
+  height: 120px;
+  border: 0;
+}
+
+.non-click {
+  background-color: rgb(222, 213, 116);
+}
+.box2.non-click {
+  background-color: rgb(116, 134, 222);
+}
+
+.box1.click {
+  background-color: rgb(112, 154, 218);
+}
+.box2.click {
+  background-color: orchid;
+}
+.box3.click {
+  background-color: rgb(188, 218, 112);
+}
+.box4.click {
+  background-color: rgb(218, 131, 112);
+}
+body{
+  width: 500px;
+  margin: auto;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box1 non-click" id="first">1번</div>
+    <div class="box2 non-click" id="second">2번</div>
+    <div class="box3 non-click" id="third">3번</div>
+    <div class="box4 non-click" id="fourth">4번</div>
+  </div>
+  <div class="box">
+    <div class="a1">aa1</div>
+    <div class="a1">aa2</div>
+    <div class="a1">aa3</div>
+    <div class="a1">aa4</div>
+    <div class="a1">aa5</div>
+   </div>
+   <div id="a2">www</div>
+
+  <!-- 박스색상변경 -->
+  <script>
+    const nonClick = document.querySelectorAll(".non-click");
+
+function handleClick(event) {
+  // div에서 모든 "click" 클래스 제거
+  nonClick.forEach((e) => {
+    e.classList.remove("click");
+  });
+  // 클릭한 div만 "click"클래스 추가
+  event.target.classList.add("click");
+}
+
+nonClick.forEach((e) => {
+  e.addEventListener("click", handleClick);
+});
+  </script>
+
+
+  <!-- 글씨색상변경 -->
+  <script>
+var a2=document.querySelectorAll("#a2");
+
+      a2[0].addEventListener("click",click_1);
+      function click_1(){
+        this.style.color="tomato";}
+
+     var a1= document.querySelectorAll(".box>.a1");
+
+     function click(){
+       for(var i=0; i<a1.length;i++){
+         a1[i].style.color="black";
+         a1[i].style.fontSize="1rem";
+       }
+       this.style.color="tomato";
+       this.style.fontSize="2rem";
+     }
+
+     for(var j=0;j<a1.length;j++){
+       a1[j].addEventListener("click",click);
+     }
+
+     // 클릭함수를 만들고
+     // 각 요소에 클릭이벤트를 adeventLisener에 전달
+
+     document.addEventListener("mousedown",r_click);
+     function r_click(){
+       if(event.button==2){
+         alert("죄송합니다. 오른쪽 마우스를 사용할 수 없습니다.")
+       }
+     }
+
+     // event.button ==1 왼쪽버튼
+     // event.button ==2 오른쪽버튼
+     // event.button ==4 가운데버튼
+  </script>
+</body>
+</html>

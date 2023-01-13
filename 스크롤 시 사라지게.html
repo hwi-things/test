@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>스크롤 만들어보기</title>
+    <link rel="stylesheet" href="./scroll.css">
+    <style>
+*{margin:0;padding:0}
+a{text-decoration:none}
+.content_wrap>div{height:1500px}
+div.content{width:1400px;margin:0 auto}
+.hide {display:none}
+
+/* 스크롤 메뉴 */
+.scroll_01{background-color:crimson;color:#fff}
+
+/* 아래로 스크롤하면 배경이 사라지고 위로 스크롤 하면 배경이 생깁니다. */
+.scroll_01{position:fixed;top:0;left:50%;z-index:100;width:100%;padding:10px 0;text-align:center;transform:translate(-50%);transition:all .3s}
+    </style>
+</head>
+<body>
+    <div class="scroll_01">
+        아래로 스크롤하면 배경이 사라지고<br>
+        위로 스크롤 하면 배경이 생깁니다.
+    </div>
+    <div class="content_wrap">
+        <div class="content" style="background:lightblue;">1</div>
+        <div class="content" style="background:lightcoral;">2</div>
+        <div class="content" style="background:lightcyan;">3</div>
+        <div class="content" style="background:lightgreen;">4</div>
+        <div class="banner" style="background:khaki;">5</div>
+        <div class="content" style="background:lightpink;">6</div>
+        <div class="content" style="background:lightsalmon;">7</div>
+        <div class="content" style="background:lightseagreen;">8</div>
+        <div class="content" style="background:lightslategray;">9</div>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+      var lastScrollTop = 0;
+
+$(window).scroll(function(){
+    var scrollTop = $(this).scrollTop(); /* 스크롤바 수직 위치를 가져옵니다, 괄호 안에 값(value)이 있을 경우 수직 위치를 정합니다. */
+        // scrollTop - 선택한 요소의 스크롤바 수직 위치를 반환하거나 스크롤바 수직 위치를 정하는 메소드
+    
+    if(scrollTop >= 100) { // 숫자에 따라 아래로 스크롤 했을 때 사라지는 영역의 크기가 바뀝니다.
+        if ((scrollTop > lastScrollTop) && (lastScrollTop>0)) { /* &&: AND, 두 값이 모두 참이어야 값이 출력 */
+            /* 화면에 나오지 않을 때: top값을 마이너스로 요소가 보이지 않게 사용해야함 */
+            $(".scroll_01").css("top","-100px");
+        } else {
+            $(".scroll_01").css("top","0px");
+        }
+
+        lastScrollTop = scrollTop;
+    } 
+
+    $(".content").each(function () {
+        var contentIndex = $(this).attr("id");
+        if(scrollTop >= $(this).offset().top) {
+            $(".scroll_03 a").removeClass("on");
+            $(".scroll_03 a[href=#"+contentIndex+"]").addClass("on");
+        }
+    })
+});
+    </script>
+</body>
+</html>

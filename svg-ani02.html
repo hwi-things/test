@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+<style>
+.star{
+	margin: 300px;
+	stroke-dasharray:942 ;
+	stroke-dashoffset: 942;
+	animation: star 9s linear infinite;
+}
+
+@keyframes star{
+	0%{
+		stroke-dashoffset: 942;
+	}
+	50%{
+		stroke-dashoffset: 0;
+	}
+	100%{
+		stroke-dashoffset: -942;
+	}
+}
+/* @keyframes star{
+	0% {
+		motion-offset: 0%;
+		offset-distance: 0%;
+		width: 10px;
+		background-position: right;
+	}
+	15% {
+		width: 237px;
+	}
+	85% {
+		background-position: left;
+		width: 237px;
+	}
+
+	100% {
+		motion-offset: 100%;
+		offset-distance: 100%;
+		width: 10px;
+	}
+} */
+</style>
+
+	</head>
+	<body>
+		<svg class="star" width="256" height="243" viewBox="0 0 256 243" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M128 4.85412L156.658 93.0552L156.995 94.0917H158.085H250.825L175.797 148.603L174.915 149.244L175.252 150.28L203.91 238.481L128.882 183.97L128 183.329L127.118 183.97L52.09 238.481L80.7482 150.28L81.085 149.244L80.2033 148.603L5.17495 94.0917H97.9151H99.0049L99.3417 93.0552L128 4.85412Z" stroke="black" stroke-width="3"/>
+			</svg>
+			
+	</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .wrap{
+      display: flex;
+      margin-bottom: 15px;
+    }
+    #my_div {
+  background: green;
+  height: 100px;
+  width: 200px;
+  margin-right: 20px;
+}
+    #my_div2 {
+  background: tomato;
+  height: 100px;
+  width: 200px;
+  margin-right: 20px;
+}
+    #my_div3 {
+  background: lightblue;
+  height: 100px;
+  width: 200px;
+  margin-right: 20px;
+}
+    #my_div4 {
+  background: lightgray;
+  height: 100px;
+  width: 200px;
+  margin-right: 20px;
+}
+    #my_div5 {
+  background: rosybrown;
+  height: 100px;
+  width: 200px;
+  margin-right: 20px;
+}
+#out_div {
+  background: green;
+  height: 100px;
+  width: 200px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+#in_div {
+  background: yellow;
+  height: 50px;
+  width: 100px;
+  display: inline-block;
+}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div id='my_div'>click, contextmenu, mousedown, mouseup</div>
+    <div id='my_div2'>dblclick/ mousemove</div>
+    <div id='my_div3'>mouseover/ mouseout</div>
+    <div id='my_div4'>mouseenter/ mouseleave</div>
+    <div id='out_div'>
+      mouseover/ mouseouts <br> 에만 노란색박스 인식 <br> mouseenter/ mouseleave 
+      <div id='in_div'>는 초록만 인식</div>
+    </div>
+  </div>
+  <input id='clearbtn' type='button' value='clear' />
+  <div id='result'>
+  </div>
+
+  <script>
+    const div = document.getElementById('my_div');
+    const div2 = document.getElementById('my_div2');
+    const div3 = document.getElementById('my_div3');
+    const div4 = document.getElementById('my_div4');
+    const div5 = document.getElementById('out_div');
+const clearbtn = document.getElementById('clearbtn');
+const result = document.getElementById('result');
+
+
+// 마우스 오른쪽버튼 클릭 시
+div.addEventListener('contextmenu', (event) => {
+  result.innerHTML+= '<div>contextmenu</div>';
+});
+
+// 마우스 왼쪽버튼 클릭 시
+div.addEventListener('click', (event) => {
+  result.innerHTML+= '<div>click</div>';
+});
+
+// 마우스 눌렀다
+div.addEventListener('mousedown', (event) => {
+  result.innerHTML+= '<div>mousedown</div>';
+});
+
+// 마우스 뗐다
+div.addEventListener('mouseup', (event) => {
+  result.innerHTML+= '<div>mouseup</div>';
+});
+
+// 더블클릭
+div.addEventListener('dblclick', (event) => {
+  result.innerHTML+= '<div>dblclick</div>';
+});
+
+// 마우스 스치기만해도..
+div2.addEventListener('mousemove', (event) => {
+  result.innerHTML+= '<div>mousemove</div>';
+});
+
+// 마우스 가져갔다1
+div3.addEventListener('mouseover', (event) => {
+  result.innerHTML+= '<div>mouseover</div>';
+});
+
+// 마우스 치웠다1
+div3.addEventListener('mouseout', (event) => {
+  result.innerHTML+= '<div>mouseout</div>';
+});
+
+// 마우스 가져갔다2
+div4.addEventListener('mouseenter', (event) => {
+  result.innerHTML+= '<div>mouseenter</div>';
+});
+
+// 마우스 치웠다2
+div4.addEventListener('mouseleave', (event) => {
+  result.innerHTML+= '<div>mouseleave</div>';
+});
+
+// 비교체험
+div5.addEventListener('mouseover', (event) => {
+  result.innerHTML+= `<div>mouseover ${event.target.id}</div>`;
+});
+
+div5.addEventListener('mouseout', (event) => {
+  result.innerHTML+= `<div>mouseout ${event.target.id}</div>`;
+});
+
+// clear버튼
+clearbtn.addEventListener('click', (event) => {
+  result.innerHTML= '';
+});
+  </script>
+</body>
+</html>

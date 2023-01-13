@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .map-cluster {
+        position: absolute;
+        top: 20%;
+        left: 30%;
+        font-size: 30px;
+        background-color: #3c9fe8;
+        color: #3c9fe8;
+      }
+      .map-cluster .number,
+      .map-cluster::before {
+        position: absolute;
+        /* font-weight: 800; */
+        font-weight: 700;
+        height: 3em;
+        width: 3em;
+        border-radius: 3em;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        cursor: pointer;
+        transition: opacity 0.3s ease;
+      }
+      .map-cluster::before {
+        content: "";
+        border: 2px solid #ffffff;
+        background-color: inherit;
+        opacity: 0.5;
+      }
+      .map-cluster:hover::before {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="marker-area">
+      <div class="map-cluster">
+        <span class="number">365</span>
+      </div>
+    </div>
+  </body>
+</html>

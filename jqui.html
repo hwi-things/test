@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>jQuery UI Selectable - Default functionality</title>
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
+    />
+    <link rel="stylesheet" href="/resources/demos/style.css" />
+
+    <style>
+      #feedback {
+        font-size: 1.4em;
+      }
+      #selectable .ui-selecting {
+        background: #feca40;
+      }
+      #selectable .ui-selected {
+        background: #f39814;
+        color: white;
+      }
+      #selectable {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 60%;
+      }
+      #selectable li {
+        margin: 3px;
+        padding: 0.4em;
+        font-size: 1.4em;
+        height: 18px;
+      }
+
+      #draggable,
+      #draggable3 {
+        width: 100px;
+        height: 100px;
+        padding: 0.5em;
+        float: left;
+        margin: 0 10px 10px 0;
+      }
+      #draggable2 {
+        width: 100px;
+        height: 100px;
+        border-radius: 100px;
+        background-color: #f39814;
+        padding: 0.5em;
+        float: left;
+        margin: 0 10px 10px 0;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+      $(function () {
+        $("#selectable").selectable();
+        $("#draggable").draggable({ scroll: true });
+        $("#draggable2").draggable({ scroll: true, scrollSensitivity: 100 });
+        $("#draggable3").draggable({ scroll: true, scrollSpeed: 100 });
+      });
+    </script>
+  </head>
+  <body>
+    <ul id="selectable">
+      <li class="ui-widget-content">Item 1</li>
+      <li class="ui-widget-content">Item 2</li>
+      <li class="ui-widget-content">Item 3</li>
+      <li class="ui-widget-content">Item 4</li>
+      <li class="ui-widget-content">Item 5</li>
+      <li class="ui-widget-content">Item 6</li>
+      <li class="ui-widget-content">Item 7</li>
+    </ul>
+    <div id="draggable" class="ui-widget-content">
+      <p>Scroll set to true, default settings</p>
+    </div>
+
+    <div id="draggable2" class="ui-widget-content">
+      <p>scrollSensitivity set to 100</p>
+    </div>
+
+    <div id="draggable3" class="ui-widget-content">
+      <p>scrollSpeed set to 100</p>
+    </div>
+
+    <div style="height: 5000px; width: 1px"></div>
+  </body>
+</html>

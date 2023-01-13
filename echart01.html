@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!-- Include the ECharts file you just downloaded -->
+
+    <!-- <script src="./assets/plugin/echarts.js"></script> -->
+    <script src="./assets/plugin/echarts.min.js"></script>
+    <style>
+      #study02 {
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Prepare a DOM with a defined width and height for ECharts -->
+    <div id="study01" style="width: 600px; height: 400px"></div>
+    <div id="study02" style="width: 600px; height: 400px"></div>
+    <script type="text/javascript">
+      // Initialize the echarts instance based on the prepared dom
+      var myChart01 = echarts.init(document.getElementById("study01"));
+      var myChart02 = echarts.init(document.getElementById("study02"));
+
+      //옵션
+      var option01 = {
+        type: "piecewise",
+        title: {
+          text: "ECharts study01",
+        },
+        tooltip: {
+          trigger: "axis", //하면 모든 범례 다 보여줌
+        },
+        toolbox: {
+          show: true,
+          itemSize: 19,
+        
+        
+          
+          feature: {
+            dataZoom: {
+              yAxisIndex: "none",
+            },
+            dataView: {
+              readOnly: false,
+            },
+            magicType: {
+              type: ["line", "bar"],
+            },
+            restore: {},
+            saveAsImage: {},
+          },
+        },
+        legend: {
+          data: ["범례1", "범례2"],
+        },
+        // 가로
+        xAxis: {
+          data: ["도", "미", "솔", "레", "레", "미"],
+        },
+        // 세로
+        yAxis: {},
+        series: [
+          {
+            name: "범례1",
+            type: "bar",
+            data: [5, 20, 36, 10, 10, 20],
+          },
+          {
+            name: "범례2",
+            type: "line",
+            data: [5, 20, 3, 10, 15, 20],
+          },
+        ],
+      };
+
+      // Display the chart using the configuration items and data just specified.
+      myChart01.setOption(option01);
+
+      var option02 = {
+        title: {
+          text: "ECharts study02",
+        },
+        tooltip: {},
+
+        // 범례 표시 & 스타일 적용
+        legend: {
+          data: ["범례1", "범례2"],
+          backgroundColor: "#333",
+          textStyle: {
+            color: "#fff",
+          },
+          //첫 로딩 시 보이는 범주 설정
+          selected: {
+            범례1: true,
+            범례2: false,
+          },
+        },
+        grid: {
+    show: true //false가 기본값인듯
+  },
+        xAxis: {
+          // type: 'category', 용도를 모르겠음
+          data: ["Shirts", "Cardigans", "Chiffons", "Pants", "Heels", "Socks"],
+        },
+        yAxis: {},
+        series: [
+          {
+            name: "범례1",
+            type: "bar",
+            data: [5, 20, 36, 10, 10, 20],
+          },
+          {
+            name: "범례2",
+            type: "scatter",
+            data: [5, 20, 36, 10, 10, 20],
+            colorBy: "data", //series로하면 색상 통일
+            symbol: "arrow" //'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
+          },
+        ],
+      };
+
+      // Display the chart using the configuration items and data just specified.
+      myChart02.setOption(option02);
+    </script>
+  </body>
+</html>

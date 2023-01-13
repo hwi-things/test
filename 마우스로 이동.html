@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="”en”">
+  <head>
+    <meta charset="”UTF-8″" />
+    <meta http-equiv="”X-UA-Compatible”" content="”IE" ="edge”" />
+    <meta
+      name="”viewport”"
+      content="”width"
+      ="device-width,"
+      initial-scale="1.0″"
+    />
+    <title>Document</title>
+    <style>
+      .wrap {
+        display: flex;
+        justify-content: space-between;
+      }
+      .test {
+        border-radius: 50%;
+        width: 240px;
+        height: 240px;
+        position: relative;
+        top: 0;
+        left: 0;
+        transition: all;
+      }
+      .test1 {
+        background-color: red;
+      }
+      .test2 {
+        background-color: rebeccapurple;
+      }
+      .test3 {
+        background-color: royalblue;
+      }
+      .test4 {
+        background-color: rosybrown;
+      }
+      .test5 {
+        background-color: aqua;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="”wrap”">
+      <div class="”test" test1″></div>
+      <div class="”test" test2″></div>
+      <div class="”test" test3″></div>
+      <div class="”test" test4″></div>
+      <div class="”test" test5″></div>
+    </div>
+    <script>
+      /**
+      * 함수 응용
+      */
+      let testA = document.querySelector(“.test1”);
+      let testB = document.querySelector(“.test2”);
+      let testC = document.querySelector(“.test3”);
+      let testD = document.querySelector(“.test4”);
+      let testE = document.querySelector(“.test5”);</p>
+      <p>let isClick = false;</p>
+      <p>function test(testEl) {
+      // console.log(testEl);
+      testEl.addEventListener(“mousedown”, function (e) {
+      console.log(e, `123123`);
+      isClick = true;
+      });</p>
+      <p>testEl.addEventListener(“mousemove”, function (e) {
+      // console.log(e.clientX)
+      // console.log(testEl.style.left = `${e.clientX- 120}`);
+      if (!isClick) return;
+      testEl.style.left = `${e.clientX – 120} px`;
+      testEl.style.top = `${e.clientY – 120}px`;
+      });</p>
+      <p>window.addEventListener(“mouseup”, function () {
+      isClick = false;
+      });
+      }</p>
+      <p>// testA.addEventListener
+      test(testA);
+      test(testB);
+      test(testC);
+      test(testD);
+      test(testE);
+    </script>
+  </body>
+</html>

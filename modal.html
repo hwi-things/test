@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>modal test page</title>
+    <link rel="stylesheet" href="./assets/plugin/fontawesome/css/all.min.css" />
+    <style>
+      .wrap {
+        padding: 2rem;
+      }
+      button{
+        font-family: "Font Awesome 5 Free";
+
+      }
+      .button01 {
+        width: 100px;
+        height: 30px;
+        background-color: bisque;
+        border: transparent;
+        border-radius: 30px;
+        cursor: pointer;
+      }
+      #modal_content.hide {
+        display: none;
+        margin: auto;
+        width: 300px;
+        height: 300px;
+        background: darkcyan;
+      }
+      #modal_content.show {
+        display: block;
+        margin: auto;
+        width: 300px;
+        height: 300px;
+        background: darkcyan;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <button type="button" class="button01" onclick="Modal_s('#modal_content')">
+        button
+      </button>
+      <div id="modal_content" class="hide">
+        <div class="content_area">
+          <h3>modal test</h3>
+          <button type="button" class="btn btn-icon btn-close" onclick="Modal_h('.wrap')">
+            <i class="fas fa-times"></i>
+          </button>
+
+        </div>
+      </div>
+    </div>
+    <!-- jquery -->
+    <script src="./assets/plugin/jquery/jquery-3.5.1.min.js"></script>
+
+    <script>
+      // $(document).ready(function () {
+      //   $(".tooltip .mobile-tooltip").click(function () {
+      //     $(this).toggleClass("on");
+      //   });
+      // });
+      // function Modal(target) {
+      //   $(target).removeClass("hide").addClass("show");
+      //   if ($("#modal_content").length == 1) {
+      //     // 첫번째 모달인 경우
+      //     $("html").addClass("modalActive");
+      //   }
+      // }
+      // function Modal(target) {
+      //   $(target).addClass("hide").removeClass("show");
+      //   if ($("#modal_content").length == 0) {
+      //     // 마지막 모달인 경우
+      //     $("html").removeClass("modalActive");
+      //   }
+      // }
+
+$(document).ready(function () {
+
+});
+
+function Modal_s(target) {
+  $(target).removeClass("hide").addClass("show");
+  $("body").addClass("modalActive")
+
+  var blur = $(target).children(".modal-bg").hasClass("blur")
+  if(blur){
+    $("body").addClass("modalActiveB")
+  }
+  $(this).addClass("blur")
+}
+
+function Modal_h(target) {
+  $(target).addClass("hide").removeClass("show");
+  if($(".modal.show").length ==0){ //show된 모달이 하나도 없을경우
+    $("body").removeClass("modalActive")
+  }
+
+  var blur = $(target).children(".modal-bg").hasClass("blur")
+  if($(".modal.show .modal-bg.blur").length === 0){
+    //내가 지운 모달이 blur일 경우, show되어있는 blur 모달이 하나도 없을경우
+    $("body").removeClass("modalActiveB")
+  }
+  // $("body").removeClass(blur ? "modalActiveB" : "modalActive")
+}
+    </script>
+  </body>
+</html>
